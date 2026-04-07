@@ -1,1 +1,329 @@
-echo "<h1>Bienvenido a mi portafolio como desarrollador</h1>" > index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristian Romero | Portafolio</title> <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Secciones Generales */
+        section {
+            padding: 6rem 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Grid Cards (Experiencia, Educación, Proyectos) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-badge {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-weight: bold;
+        }
+
+        /* Footer / Contacto */
+        footer {
+            background: var(--card-bg);
+            text-align: center;
+            padding: 4rem 5%;
+            margin-top: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">&lt;CR /&gt;</div>
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#experiencia">Experiencia</a>
+            <a href="#educacion">Educación</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <h1>Cristian Romero</h1> <h2>Systems Engineering</h2> <p>He estudiado ingeniería de sistemas y he implementado soluciones de software para múltiples clientes y empresas. Estoy disponible para trabajar por proyecto o por obra labor. </p>
+        <a href="#contacto" class="btn">Contactar</a>
+    </section>
+
+    <section id="experiencia">
+        <h2>Experiencia Laboral</h2> <div class="grid">
+            <div class="card">
+                <h3>Logística Magdalena Medio</h3> <span class="date">2024 - Presente</span> <ul>
+                    <li>Implementación de soluciones de software para mejorar los procesos logísticos. </li>
+                    <li>Implementación de soluciones matemáticas para la gestión de inventarios. </li>
+                    <li>Soporte operativo con proveedores. </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Desarrollador Interno</h3> <span class="date">Área TI Bucaramanga | 2025 - 2029</span> <ul>
+                    <li>Desarrollo e implementación de soluciones de acuerdo a los requerimientos del cliente. </li>
+                    <li>Evaluación de oportunidades de mejora en proyectos. </li>
+                    <li>Creación de manuales de usuario. </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos">
+        <h2>Proyectos Destacados</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Sistema IoT de Acuaponía Automatizado</h3>
+                <p>Desarrollo integral de un sistema para el control de acuaponía. Integración de microcontroladores IoT con un backend robusto para monitoreo en tiempo real, incluyendo el diseño de piezas personalizadas en impresión 3D.</p>
+                <div class="tags">
+                    <span class="tag">Node.js</span>
+                    <span class="tag">SQL Server</span>
+                    <span class="tag">IoT / Hardware</span>
+                    <span class="tag">Impresión 3D</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>App de Gestión de Turnos (ESSA)</h3>
+                <p>Aplicación corporativa para la programación y gestión del personal de bodega, optimizando los flujos de trabajo e integrándose de manera nativa con el entorno empresarial.</p>
+                <div class="tags">
+                    <span class="tag">Power Apps</span>
+                    <span class="tag">Power Automate</span>
+                    <span class="tag">SharePoint</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Automatización OCR con IA Local</h3>
+                <p>Script avanzado para el procesamiento y renombrado automático de archivos PDF, extrayendo texto mediante reconocimiento óptico de caracteres y modelos de inteligencia artificial ejecutados localmente.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Ollama</span>
+                    <span class="tag">Automatización</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="educacion">
+        <h2>Educación</h2> <div class="grid">
+            <div class="card">
+                <h3>Ingeniería de Sistemas</h3> <span class="date">UNAD | 2022 - 2026</span> </div>
+            <div class="card">
+                <h3>Tecnólogo en Análisis y Desarrollo de Sistemas</h3> <span class="date">SENA | 2020 - 2022</span> </div>
+        </div>
+    </section>
+
+    <section id="habilidades">
+        <h2>Habilidades</h2> <div class="skills-container">
+            <div class="skill-badge">Gestión de Proyectos</div> <div class="skill-badge">Trabajo en Equipo</div> <div class="skill-badge">Relaciones Públicas</div> <div class="skill-badge">Desarrollo Web & Móvil (Flutter)</div>
+            <div class="skill-badge">Bases de Datos (SQL)</div>
+            <div class="skill-badge">Ecosistema Microsoft 365</div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <h2>Trabajemos Juntos</h2>
+        <div class="contact-info">
+            <a href="mailto:cristianromerotech@gmail.com"><i class="fas fa-envelope"></i> cristianromerotech@gmail.com</a> <a href="tel:+573247815162"><i class="fas fa-phone"></i> 324 781 5162</a> <a href="https://cristianromero-tech.github.io" target="_blank"><i class="fas fa-globe"></i> cristianromero-tech.github.io</a> <span><i class="fas fa-map-marker-alt"></i> Bogotá D.C, Colombia</span> </div>
+        <p style="color: var(--text-muted);">&copy; 2026 Cristian Romero. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
